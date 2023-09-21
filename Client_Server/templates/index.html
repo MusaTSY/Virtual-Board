@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Socket Client Test</h1>
+        <p>Enter your information below and click the "Send" button to send it to the server.</p>
+        <div class="form-container">
+            <form action="/receive_message" method="post">
+                <label for="usernameInput">Event Name:</label>
+                <input class="client_user" id="usernameInput" name="username" required>
+                <label for="locationInput">EventTime:</label>
+                <input class="eventtime_user" id="eventtimeInput" name="eventtime" required>
+                <label for="eventtimeInput">Location:</label>
+                <input class="location_user" id="locationInput" name="location" required>
+                <label for="messageInput">Post Board Message:</label>
+                <textarea class="messagebox" id="messageInput" name="message" required></textarea>
+                <button class="submit-button" type="submit">Send</button>
+            </form>
+            
+        </div>
+        <div>
+            <form action="/check_messages" method="post">
+                <button class="submit-button" type="submit">Check</button>
+            </form>
+        </div>
+        <div id="responseContainer">
+            {% if response %}
+                <p class="server-response">Server Response: {{ response }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
